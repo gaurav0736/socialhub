@@ -84,7 +84,7 @@
                   </a>
                 </div>
                 <div class="card-body">
-                  <h6 class="card-category text-gray">{{ $user->state}}/ {{ $user->Country}}</h6>
+                  <h6 class="card-category text-gray">{{ $user->state}}/ {{ $user->country}}</h6>
                   <h4 class="card-title">{{ $user->name}}</h4>
                   <p class="card-description">
                     {{ $user->about}}

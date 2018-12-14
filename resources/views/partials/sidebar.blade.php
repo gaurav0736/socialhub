@@ -17,46 +17,32 @@
               <p>Dashboard</p>
             </a>
           </li>
+         
           <li class="nav-item ">
-            <a class="nav-link" href="./user.html">
-              <i class="material-icons">person</i>
-              <p>User Profile</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./tables.html">
+            <a class="nav-link" href="{{ url('/projects') }}">
               <i class="material-icons">content_paste</i>
-              <p>Table List</p>
+              <p>Projects</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="./typography.html">
+            <a class="nav-link" href="{{ url('/tasks') }}">
               <i class="material-icons">library_books</i>
-              <p>Typography</p>
+              <p>Tasks</p>
             </a>
           </li>
+         
+         
           <li class="nav-item ">
-            <a class="nav-link" href="./icons.html">
-              <i class="material-icons">bubble_chart</i>
-              <p>Icons</p>
+            <a class="nav-link" href="{{ url('/settings') }}">
+              <i class="material-icons">settings</i>
+              <p>Settings</p>
             </a>
           </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./map.html">
-              <i class="material-icons">location_ons</i>
-              <p>Maps</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./notifications.html">
-              <i class="material-icons">notifications</i>
-              <p>Notifications</p>
-            </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="./rtl.html">
-              <i class="material-icons">language</i>
-              <p>RTL Support</p>
+
+           <li class="nav-item ">
+            <a class="nav-link" href="{{ url('/profile') }}">
+              <i class="material-icons">person</i>
+              <p>My Profile</p>
             </a>
           </li>
              
@@ -68,7 +54,7 @@
 
 <!-- Sidebar for changing color and sidebar image background -->
 
-     <div class="fixed-plugin">
+  <!--    <div class="fixed-plugin">
     <div class="dropdown show-dropdown">
       <a href="#" data-toggle="dropdown">
         <i class="fa fa-cog fa-2x"> </i>
@@ -113,5 +99,5 @@
        
       </ul>
     </div>
-  </div>
+  </div> -->
     

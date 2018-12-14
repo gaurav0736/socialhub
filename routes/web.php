@@ -27,3 +27,13 @@ Route::get('/settings', 'SettingsController@index')->name('settings');
 Route::get('/profile', 'UserController@index')->name('profile');
 
 Route::post('/profile/edit', 'UserController@update')->name('profile.edit');
+
+Route::get('/projects', 'ProjectsController@index')->name('projects');
+
+Route::get('/projects/create', 'ProjectsController@create')->name('projects.create');
+
+Route::post('/projects/store', 'ProjectsController@store')->name('projects.store');
+
+Route::get('/projects/edit/{projects}', 'ProjectsController@edit')->name('projects.edit');
+
+Route::post('/projects/update/{projects}', 'ProjectsController@update')->name('projects.update');

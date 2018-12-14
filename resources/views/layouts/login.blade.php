@@ -9,7 +9,7 @@
         <title>{{ config('app.name', 'laravel') }}</title>
          <!-- Scripts -->
         <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
-        
+        <link href="{{ asset('css/bootstrap-datetimepicker.css') }}" rel="stylesheet" />
         <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
         <!--  CSS for Demo Purpose, don't include it in your project     -->
         <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
@@ -49,6 +49,7 @@
               @include('partials.sidebar')
              <div class="main-panel">
               @include('partials.header')
+              @include('partials.flash')
               @yield('content')
               @include('partials.footer')        
             </div>
@@ -269,6 +270,16 @@
         });
       });
     });
+
+ $(function () {
+                $('.datetimepicker').datetimepicker({
+                    format: 'YYYY-MM-DD',
+                    icons: {
+                    next: "fa fa-angle-double-right",
+                    previous: "fa fa-angle-double-left"
+                }
+                });
+            });
   </script>
   <script>
     $(document).ready(function() {
