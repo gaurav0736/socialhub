@@ -36,4 +36,4 @@ Route::post('/projects/store', 'ProjectsController@store')->name('projects.store
 
 Route::get('/projects/edit/{projects}', 'ProjectsController@edit')->name('projects.edit');
 
-Route::post('/projects/update/{projects}', 'ProjectsController@update')->name('projects.update');
+Route::put('/projects/update/{projects}', 'ProjectsController@update')->name('projects.update');

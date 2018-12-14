@@ -18,7 +18,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Projects::paginate(2);       
+        $projects = Projects::paginate(5);       
         return view('admin/manageProjects', compact('projects'));
     }
 
@@ -29,7 +29,9 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-        return view('admin/editProjects');
+         $project = new Projects();
+      //   dd($project);
+       return view('admin/editProjects', compact('project'));
     }
 
     /**
@@ -89,7 +91,19 @@ class ProjectsController extends Controller
      */
     public function update(Request $request, Projects $projects)
     {
-        //
+       
+
+     $projects->update([
+        'p_name' => $request->input('p_name'),
+        'p_start_date' => $request->input('p_start_date'),
+        'p_end_date' => $request->input('p_end_date'),
+        'p_assigned' => $request->input('p_assigned'),
+        'p_status' => $request->input('p_status'),
+        'p_description' => $request->input('p_description'),
+        'updated_at' => $request->input('updated_at'),
+    ]);
+        return redirect('projects');
+
     }
 
     /**

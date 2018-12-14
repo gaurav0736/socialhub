@@ -11,8 +11,9 @@
                   <p class="card-category">Enter details about your projects...</p>
                 </div>
                 <div class="card-body">
-                  @if(isset($project))                   
-                   <form method="put" action="{{ route('projects.update', $project->id) }}">
+                  @if(isset($project->id))                   
+                   <form  method="post" action="{{ route('projects.update', $project->id) }}">   
+                    {{ method_field('PUT') }}
                   @else
                    <form method="post" action="{{ route('projects.store') }}">
                   @endif
