@@ -41,6 +41,9 @@
                           End Date
                         </th>
                         <th>
+                         Assigned To
+                        </th>
+                        <th>
                           Status
                         </th>
                          <th>
@@ -73,6 +76,9 @@
                           </td>
                           <td>
                             {{ $project->p_end_date }}
+                          </td>
+                           <td >
+                            {{$project->users->name }}
                           </td>
                           <td >
                             {{ $project->p_status }}

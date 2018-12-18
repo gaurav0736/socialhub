@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Projects;
 use Illuminate\Http\Request;
+use Helper;
+use DB;
 
 class ProjectsController extends Controller
 {
@@ -29,9 +31,12 @@ class ProjectsController extends Controller
      */
     public function create()
     {
-         $project = new Projects();
+        $project = new Projects();
+         $p_assigned = DB::table('users')->pluck('name','id'); 
       //   dd($project);
-       return view('admin/editProjects', compact('project'));
+        $p_status = Helper::getEnumValues('projects','p_status'); 
+
+       return view('admin/editProjects', compact('project','p_status','p_assigned'));
     }
 
     /**
@@ -52,8 +57,6 @@ class ProjectsController extends Controller
         $project->p_name=$request->input('p_name');
         $project->created_at=date('Y-m-d H:i:s');
         $project->updated_at=date('Y-m-d H:i:s');
-
-
         $project->save();
         return redirect('projects');
     }
@@ -78,8 +81,9 @@ class ProjectsController extends Controller
     public function edit($projects)
     {
         $project = Projects::where('id', $projects)->firstOrFail();
-
-       return view('admin/editProjects', compact('project'));
+          $p_assigned = DB::table('users')->pluck('name','id'); 
+         $p_status = Helper::getEnumValues('projects','p_status'); 
+       return view('admin/editProjects', compact('project','p_status','p_assigned'));
     }
 
     /**
@@ -92,6 +96,7 @@ class ProjectsController extends Controller
     public function update(Request $request, Projects $projects)
     {
        
+       //dd($request->input('p_status'));
 
      $projects->update([
         'p_name' => $request->input('p_name'),

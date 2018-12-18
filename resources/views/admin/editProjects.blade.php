@@ -44,13 +44,24 @@
                       <div class="col-md-6">
                         <div class="form-group">
                           <label class="bmd-label-floating">Project Assigned</label>
-                          <input type="text" name="p_assigned" class="form-control" value="{{ $project->p_assigned}}">
+                          
+                           <select class="form-control" name="p_assigned" > 
+                           @foreach($p_assigned as $key => $value)
+                            <option value="{{$key}}" {{ ($project->p_assigned == $key) ? 'selected' : ''}}>{{$value}}</option>
+                        @endforeach
+                          </select>
+
                         </div>
                       </div>
                        <div class="col-md-6">
                         <div class="form-group">
-                          <label class="bmd-label-floating">Status</label>
-                          <input type="text" name="p_status" class="form-control" value="{{ $project->p_status}}">
+                          <label class="">Status</label>
+                          <select class="form-control" name="p_status" > 
+                           @foreach($p_status as $key => $value)
+                            <option value="{{$value}}" {{ ($project->p_status == $value) ? 'selected' : ''}}>{{$value}}</option>
+                        @endforeach
+                          </select>
+                         
                         </div>
                       </div>
                     </div>
