@@ -12,10 +12,12 @@
                 </div>
                 <div class="card-body">
                   @if(isset($project->id))                   
-                   <form  method="post" action="{{ route('projects.update', $project->id) }}">   
+                   <form  method="post" action="{{ route('projects.update', $project->id) }}" enctype="multipart/form-data"
+>   
                     {{ method_field('PUT') }}
                   @else
-                   <form method="post" action="{{ route('projects.store') }}" autocomplete="off">
+                   <form method="post" action="{{ route('projects.store') }}" autocomplete="off" enctype="multipart/form-data"
+>
                   @endif
                   @csrf
                     <div class="row">
@@ -73,7 +75,7 @@
                       </div>
                     </div>
                     <div class="row">
-                      <div class="col-md-12">
+                      <div class="col-md-8">
                         <div class="form-group">
                           <label>Project Description</label>
                           <div class="form-group">
@@ -82,6 +84,24 @@
                           </div>
                         </div>
                       </div>
+                      <div class="col-md-4 col-sm-4">
+                      <h4 class="title">Project Image</h4>
+                      <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                        <div class="fileinput-new thumbnail">
+                          <img src="{{ asset('img/image_placeholder.jpg')}}" >
+                        </div>
+                        <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                        <div>
+                          <span class="btn btn-rose btn-round btn-file">
+                            <span class="fileinput-new">Select image</span>
+                            <span class="fileinput-exists">Change</span>
+                            <input type="file" name="p_image">
+                          </span>
+                          <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                        </div>
+                         <span class="text-danger error">{{ $errors->first('p_image') }}</span>
+                      </div>
+                    </div>
                     </div>
                     <button type="submit" class="btn btn-primary pull-right">Add/Edit</button>
                     <div class="clearfix"></div>

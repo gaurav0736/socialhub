@@ -23,6 +23,7 @@ class ProjectsController extends Controller
             'p_end_date' => 'required|date_format:"Y-m-d"|after:p_start_date',
             'p_assigned' => 'required|integer',
             'p_status' => 'required',
+            'p_image' => 'sometimes|mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }
 
@@ -34,6 +35,7 @@ class ProjectsController extends Controller
             'p_end_date' => 'Project End Date',
             'p_assigned' => 'Project Assigned To',
             'p_status' => 'Project Status',
+             'p_image' => 'Project Image',
         ];
     }
 
