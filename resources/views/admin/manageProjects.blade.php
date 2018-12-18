@@ -96,12 +96,19 @@
                     </table>
                   </div>                   
                 </div>
-                    <div class="pagination"> 
-                      {{ $projects->render() }}
-                  </div>
+
+                <div class="card-footer">                           
+                          <div class="task">
+                            <button class="btn btn-danger">
+                                <i class="material-icons">close</i> Delete
+                              <div class="ripple-container"></div></button>
+                            </div>
+                          <div class="pagination" > 
+                                {{ $projects->render() }}
+                          </div>                   
+                 </div>
               </div>
-            </div>
-           
+            </div>           
           </div>
         </div>
       </div>
