@@ -21,16 +21,27 @@
                     </div>
                   </div>
                 </div>
+            <form method="post" id="manageForm" action="{{ route('projects.deleteAll') }}" autocomplete="off">
+               {{ method_field('DELETE') }}
+               @csrf
                 <div class="card-body">
                   <div class="table-responsive">
                     <table class="table">
                       <thead class=" text-primary">
-                        <th width="2%">                          
+                        <th width="2%">  
+                         <div class="form-check">
+                                <label class="form-check-label"> 
+                                  <input class="form-check-input" type="checkbox" id="checkAll">
+                                  <span class="form-check-sign">
+                                    <span class="check"></span>
+                                  </span>
+                                </label>
+                              </div>                        
                         </th>
                         <th>
                           S. No.
                         </th>
-                         
+                          
                         <th>
                           Project Name
                         </th>
@@ -53,12 +64,11 @@
                       <tbody>
                       <?php $i = 1; ?>
                         @foreach ($projects as $project)  
-                        <tr>  
-
+                        <tr> 
                          <td>
                               <div class="form-check">
                                 <label class="form-check-label"> 
-                                  <input class="form-check-input" type="checkbox" value="{{ $project->id }}" >
+                                  <input class="form-check-input checkedAll" type="checkbox" value="{{ $project->id }}" name="ids[]"  data-id="{{ $project->id }}" >
                                   <span class="form-check-sign">
                                     <span class="check"></span>
                                   </span>
@@ -96,20 +106,22 @@
                     </table>
                   </div>                   
                 </div>
-
-                <div class="card-footer">                           
-                          <div class="task">
-                            <button class="btn btn-danger">
-                                <i class="material-icons">close</i> Delete
-                              <div class="ripple-container"></div></button>
-                            </div>
-                          <div class="pagination" > 
-                                {{ $projects->render() }}
-                          </div>                   
+              </form>
+                 <div class="card-footer">                           
+                    <div class="task">
+                        <button class="btn btn-danger delete-all">
+                            <i class="material-icons">close</i> Delete
+                          <div class="ripple-container"></div></button>
+                     </div>
+                     <div class="pagination" > 
+                            {{ $projects->render() }}
+                    </div>                   
                  </div>
+           
               </div>
             </div>           
           </div>
         </div>
       </div>
 @endsection
+

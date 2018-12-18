@@ -26,3 +26,18 @@
 	});			 
 </script>
  @endif  
+
+
+ @if (session('deleted'))        
+<script>
+ $(document).ready(function() {
+ 	  swal({
+                title: "Success!",
+                text: "{{ session('deleted') }}",
+                buttonsStyling: false,
+                confirmButtonClass: "btn btn-success",
+                type: "success"
+            }).catch(swal.noop)
+	});			 
+</script>
+ @endif  

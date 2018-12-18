@@ -150,8 +150,13 @@ class ProjectsController extends Controller
      * @param  \App\Projects  $projects
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Projects $projects)
+    public function deleteAll(Request $request)
     {
-        //
+        $ids = $request->ids;
+        if(!empty($ids)){
+        Projects::whereIn('id',$ids)->delete();
+        return redirect('projects')->with("deleted", "Selected records deleted successfully.");
+         }
+         return redirect('projects')->with("deleted", "Please select at least one record.");
     }
 }
