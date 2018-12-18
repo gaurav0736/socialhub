@@ -5,6 +5,9 @@
         Tip 2: you can also add an image using data-image tag
     -->
       <div class="logo">
+        <a href="{{ url('/') }}" class="simple-text logo-mini">
+        SH
+        </a>
         <a href="{{ url('/') }}" class="simple-text logo-normal">
           {{ config('app.name', 'laravel') }}
         </a>

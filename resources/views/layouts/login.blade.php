@@ -9,13 +9,14 @@
         <title>{{ config('app.name', 'laravel') }}</title>
          <!-- Scripts -->
         <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
-        <link href="{{ asset('css/bootstrap-datetimepicker.css') }}" rel="stylesheet" />
-        <link href="{{ asset('css/material-dashboard.css?v=2.1.1') }}" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+      
+        <link href="{{ asset('css/material-dashboard.min.css?v=2.1.0') }}" rel="stylesheet" />
         <!--  CSS for Demo Purpose, don't include it in your project     -->
         <link href="{{ asset('demo/demo.css') }}" rel="stylesheet" />
         <!--     Fonts and icons     -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-        <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+        
          <!-- Styles -->
        <!--  <link href="{{ asset('css/app.css') }}" rel="stylesheet"> -->
       
@@ -49,7 +50,7 @@
               @include('partials.sidebar')
              <div class="main-panel">
               @include('partials.header')
-              @include('partials.flash')
+             
               @yield('content')
               @include('partials.footer')        
             </div>
@@ -97,7 +98,7 @@
   <!--  Notifications Plugin    -->
   <script src="{{ asset('js/plugins/bootstrap-notify.js') }}"></script>
 <!-- Material Dashboard javascript methods -->
-<script src="{{ asset('js/material-dashboard.js?v=2.1.1') }}"></script>
+<script src="{{ asset('js/material-dashboard.min.js?v=2.1.0') }}"></script>
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('demo/demo.js') }}"></script>
  <script>
@@ -275,9 +276,9 @@
                 $('.datetimepicker').datetimepicker({
                     format: 'YYYY-MM-DD',
                     icons: {
-                    next: "fa fa-angle-double-right",
-                    previous: "fa fa-angle-double-left"
-                }
+                      next: "fa fa-angle-double-right",
+                      previous: "fa fa-angle-double-left",
+                     }
                 });
             });
   </script>
@@ -285,9 +286,9 @@
     $(document).ready(function() {
       // Javascript method's body can be found in assets/js/demos.js
       md.initDashboardPageCharts();
-
+      
     });
   </script>
-
+   @include('partials.flash')
     </body>
 </html>

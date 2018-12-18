@@ -13,6 +13,32 @@ class ProjectsController extends Controller
     {
         $this->middleware('auth');
     }
+
+
+    protected function rules()
+    {
+        return [
+            'p_name' => 'required|max:200',
+            'p_start_date' => 'required|date_format:"Y-m-d"',
+            'p_end_date' => 'required|date_format:"Y-m-d"|after:p_start_date',
+            'p_assigned' => 'required|integer',
+            'p_status' => 'required',
+        ];
+    }
+
+     protected function attributes()
+    {
+        return [
+            'p_name' => 'Project Name',
+            'p_start_date' => 'Project Start Date',
+            'p_end_date' => 'Project End Date',
+            'p_assigned' => 'Project Assigned To',
+            'p_status' => 'Project Status',
+        ];
+    }
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -20,7 +46,7 @@ class ProjectsController extends Controller
      */
     public function index()
     {
-        $projects = Projects::paginate(5);       
+        $projects = Projects::orderBy('id', 'desc')->paginate(5);       
         return view('admin/manageProjects', compact('projects'));
     }
 
@@ -47,6 +73,9 @@ class ProjectsController extends Controller
      */
     public function store(Request $request)
     {
+
+    $validator =  $this->validate($request, $this->rules(), [], $this->attributes());
+
         $project = new Projects();
         $project->p_name=$request->input('p_name');       
         $project->p_start_date=$request->input('p_start_date');
@@ -54,11 +83,11 @@ class ProjectsController extends Controller
         $project->p_assigned=$request->input('p_assigned');
         $project->p_status=$request->input('p_status');
         $project->p_description=$request->input('p_description');
-        $project->p_name=$request->input('p_name');
         $project->created_at=date('Y-m-d H:i:s');
         $project->updated_at=date('Y-m-d H:i:s');
         $project->save();
-        return redirect('projects');
+         return redirect('projects')->with("status", "Project Details Saved.");
+
     }
 
     /**
@@ -96,18 +125,22 @@ class ProjectsController extends Controller
     public function update(Request $request, Projects $projects)
     {
        
-       //dd($request->input('p_status'));
+       $validator =  $this->validate($request, $this->rules(), [], $this->attributes());
+        //return back()->with("status", "Please check below errors.");
+      
 
-     $projects->update([
-        'p_name' => $request->input('p_name'),
-        'p_start_date' => $request->input('p_start_date'),
-        'p_end_date' => $request->input('p_end_date'),
-        'p_assigned' => $request->input('p_assigned'),
-        'p_status' => $request->input('p_status'),
-        'p_description' => $request->input('p_description'),
-        'updated_at' => $request->input('updated_at'),
-    ]);
-        return redirect('projects');
+
+             $projects->update([
+                'p_name' => $request->input('p_name'),
+                'p_start_date' => $request->input('p_start_date'),
+                'p_end_date' => $request->input('p_end_date'),
+                'p_assigned' => $request->input('p_assigned'),
+                'p_status' => $request->input('p_status'),
+                'p_description' => $request->input('p_description'),
+                'updated_at' => $request->input('updated_at'),
+            ]);
+                return redirect('projects')->with("status", "Project Details Updated.");
+       
 
     }
 
