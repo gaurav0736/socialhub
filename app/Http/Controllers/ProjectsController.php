@@ -39,6 +39,20 @@ class ProjectsController extends Controller
         ];
     }
 
+     protected function imageUpload($request)
+    {
+        $fileName = $request->input('p_old_image');
+        if (request()->hasFile('p_image')) {            
+            $file = request()->file('p_image');
+             if (file_exists(public_path('/uploaded_files/projects/').$fileName) && $fileName != ''){
+                    unlink(public_path('uploaded_files\projects\/'. $fileName));
+             }               
+            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $file->move(public_path('uploaded_files/projects'), $fileName);    
+        }
+        return $fileName;
+    }
+
 
 
     /**
@@ -77,10 +91,11 @@ class ProjectsController extends Controller
     {
 
     $validator =  $this->validate($request, $this->rules(), [], $this->attributes());
-
+      $p_image = $this->imageUpload($request);  
         $project = new Projects();
         $project->p_name=$request->input('p_name');       
         $project->p_start_date=$request->input('p_start_date');
+        $project->p_image=$p_image;
         $project->p_end_date=$request->input('p_end_date');
         $project->p_assigned=$request->input('p_assigned');
         $project->p_status=$request->input('p_status');
@@ -127,10 +142,12 @@ class ProjectsController extends Controller
     public function update(Request $request, Projects $projects)
     {
        
-    $validator =  $this->validate($request, $this->rules(), [], $this->attributes());     
+    $validator =  $this->validate($request, $this->rules(), [], $this->attributes());  
+    $p_image = $this->imageUpload($request); 
      $projects->update([
         'p_name' => $request->input('p_name'),
         'p_start_date' => $request->input('p_start_date'),
+        'p_image' => $p_image,
         'p_end_date' => $request->input('p_end_date'),
         'p_assigned' => $request->input('p_assigned'),
         'p_status' => $request->input('p_status'),

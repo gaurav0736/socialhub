@@ -88,16 +88,27 @@
                       <h4 class="title">Project Image</h4>
                       <div class="fileinput fileinput-new text-center" data-provides="fileinput">
                         <div class="fileinput-new thumbnail">
-                          <img src="{{ asset('img/image_placeholder.jpg')}}" >
+
+                         
+                          @if (file_exists(public_path().'/uploaded_files/projects/'.$project->p_image) && $project->p_image!= '' )
+                              <img src="{{ asset('uploaded_files/projects/'.$project->p_image) }}">
+                          @else
+                              <img src="{{ asset('img/image_placeholder.jpg')}}" >
+                          @endif
                         </div>
                         <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                        <div>
+                        <div>                      
                           <span class="btn btn-rose btn-round btn-file">
                             <span class="fileinput-new">Select image</span>
                             <span class="fileinput-exists">Change</span>
                             <input type="file" name="p_image">
+
                           </span>
+                           <input type="hidden" name="p_old_image" value="{{ old('p_image', $project->p_image)}}">
+
                           <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+
+
                         </div>
                          <span class="text-danger error">{{ $errors->first('p_image') }}</span>
                       </div>
