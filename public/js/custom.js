@@ -225,3 +225,9 @@ $("#checkAll").click(function(){
         });
 
  /*delete checkboxes ends*/
+
+
+ $('.fileinput-new.remove').click(function(){
+ 	$('.oldImage').val();
+ 	$(".oldImageSrc").attr("src",APP_URL+"/img/image_placeholder.jpg"); 	
+ })

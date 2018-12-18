@@ -7,6 +7,9 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <title>{{ config('app.name', 'laravel') }}</title>
+        <script type="text/javascript">
+          var APP_URL = {!! json_encode(url('/')) !!}
+        </script>
          <!-- Scripts -->
         <!-- <script src="{{ asset('js/app.js') }}" defer></script> -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
@@ -103,6 +106,7 @@
 <!-- Material Dashboard DEMO methods, don't include it in your project! -->
 <script src="{{ asset('demo/demo.js') }}"></script>
 <script src="{{ asset('js/custom.js?v=1.0.0') }}"></script>
+
 
    @include('partials.flash')
     </body>
