@@ -125,21 +125,17 @@ class ProjectsController extends Controller
     public function update(Request $request, Projects $projects)
     {
        
-       $validator =  $this->validate($request, $this->rules(), [], $this->attributes());
-        //return back()->with("status", "Please check below errors.");
-      
-
-
-             $projects->update([
-                'p_name' => $request->input('p_name'),
-                'p_start_date' => $request->input('p_start_date'),
-                'p_end_date' => $request->input('p_end_date'),
-                'p_assigned' => $request->input('p_assigned'),
-                'p_status' => $request->input('p_status'),
-                'p_description' => $request->input('p_description'),
-                'updated_at' => $request->input('updated_at'),
-            ]);
-                return redirect('projects')->with("status", "Project Details Updated.");
+    $validator =  $this->validate($request, $this->rules(), [], $this->attributes());     
+     $projects->update([
+        'p_name' => $request->input('p_name'),
+        'p_start_date' => $request->input('p_start_date'),
+        'p_end_date' => $request->input('p_end_date'),
+        'p_assigned' => $request->input('p_assigned'),
+        'p_status' => $request->input('p_status'),
+        'p_description' => $request->input('p_description'),
+        'updated_at' => $request->input('updated_at'),
+    ]);
+        return redirect('projects')->with("status", "Project Details Updated.");
        
 
     }
