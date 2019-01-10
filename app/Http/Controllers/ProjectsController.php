@@ -23,7 +23,7 @@ class ProjectsController extends Controller
             'p_end_date' => 'required|date_format:"Y-m-d"|after:p_start_date',
             'p_assigned' => 'required|integer',
             'p_status' => 'required',
-            'p_image' => 'sometimes|mimes:jpeg,jpg,png,gif|max:10000',
+            'p_image' => 'sometimes|nullable|mimes:jpeg,jpg,png,gif|max:10000',
         ];
     }
 
@@ -47,8 +47,13 @@ class ProjectsController extends Controller
              if (file_exists(public_path('/uploaded_files/projects/').$fileName) && $fileName != ''){
                     unlink(public_path('uploaded_files\projects\/'. $fileName));
              }               
-            $fileName = md5($file->getClientOriginalName() . time()) . "." . $file->getClientOriginalExtension();
+            $fileName = md5($file->getClientOriginalName()) . time() . "." . $file->getClientOriginalExtension();
             $file->move(public_path('uploaded_files/projects'), $fileName);    
+        }else if($request->input('removeOldimage') != ''){
+            if (file_exists(public_path('/uploaded_files/projects/').$fileName) && $fileName != ''){
+                    unlink(public_path('uploaded_files\projects\/'. $fileName));
+             } 
+             $fileName = '';
         }
         return $fileName;
     }

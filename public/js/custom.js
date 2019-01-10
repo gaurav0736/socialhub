@@ -228,6 +228,11 @@ $("#checkAll").click(function(){
 
 
  $('.fileinput-new.remove').click(function(){
- 	$('.oldImage').val();
+ $('<input>').attr({
+    type: 'hidden',
+    id: 'removeOldimage',
+    name: 'removeOldimage',
+    value: 'remove'
+}).appendTo('form');
  	$(".oldImageSrc").attr("src",APP_URL+"/img/image_placeholder.jpg"); 	
  })

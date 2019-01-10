@@ -6,7 +6,7 @@
     -->
       <div class="logo">
         <a href="{{ url('/') }}" class="simple-text logo-mini">
-        SH
+        PM
         </a>
         <a href="{{ url('/') }}" class="simple-text logo-normal">
           {{ config('app.name', 'laravel') }}

@@ -105,6 +105,7 @@
                             <input type="file" name="p_image">
                           </span>
                            <input type="hidden" name="p_old_image" class="oldImage" value="{{ old('p_image', $project->p_image)}}">
+                           
                           <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                          @if (file_exists(public_path().'/uploaded_files/projects/'.$project->p_image) && $project->p_image!= '' )
                            <a href="#pablo" class="btn btn-danger btn-round fileinput-new remove" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
